@@ -1,0 +1,10 @@
+1. Принципы ООП: полиморфизм, инкапсуляция, наследование, абстракция.
+2. Классы: класс, абстрактный класс, интерфейс, наследование, перегрузка, переопределение, области видимости, inner-классы, nested-классы.
+3. Методы: рекурсия, передача по ссылке/по значению, vararg, статические методы.
+4. Память: стек, куча, PemGen, «уборка мусора», локальные переменные, «глобальные переменные» (статические поля), Object.finalize(), Object.clone().
+5. Типы: примитивы, классы-обертки, autoboxing.
+6. Collection API: архитектура пакета коллекций (Collection, List, Set, Map, SortedSet, SortedMap, Iterable, Iterator, Comparable, Comparator), основные реализации и их внутреннее устройство (ArrayList, LinkedList, HashMap, TreeMap, HashSet, TreeSet), «устаревшие коллекции» (Vector, Stack, Hashtable, Enumeration).
+7. Java I/O: byte-ориентированные (InputStream/OutputStream), char-ориентированные (Reader/Writer), java type-ориентированные (DataInput/DataOutput), классы-адаптеры, классы-декораторы, работа с файлами.
+8. Exceptions: базовая иерархия (Throwable, Error, Exception, RuntimeException), cheched/unchecked exceptions, stack trace, обработка исключений, методы работы с исключениями в коммерческих проектах.
+9. Threads: классы JDK — Thread, Runnable, Thread.State, ключевые слова — synchronized, volatile, методы общие для всех объектов (Object.wait(), Object.notify(), Object.notifyAll()), методы класса Thread (start, run, interrupt, join, getState), создание/прерывание/уничтожение потоков, работа с потоками, передача данных между потоками, потокозащищенные классы, взаимное исключение, условное ожидание.
+10. Java Type System: OO, annotations, generics, AOP, lambda-формализм(Java 8).
