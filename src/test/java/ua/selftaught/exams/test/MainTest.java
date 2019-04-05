@@ -1,6 +1,8 @@
 package ua.selftaught.exams.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
@@ -135,6 +137,78 @@ class MainTest {
 		});
 		
 		assertEquals("String index out of range: 6", e.getMessage());
+				
+	}
+	
+	@Test
+	@DisplayName("OCA page 157. 14. Which of the following can replace line 4 to print 'avaJ'? (Choose all that apply)")
+	void testOCAPage157_14() {
+		//arrange 
+		StringBuilder sb = new StringBuilder("Java");
+		//act
+		sb.reverse();
+		//assert		
+		assertEquals("avaJ", sb.toString(), () ->  "Should be equas to 'avaJ'");
+		
+		sb = new StringBuilder("Java");
+		
+		sb.append("vaJ$").substring(0, 4);
+		
+		assertNotEquals("avaJ", sb.toString(), () -> "Should not  be equal to 'avaJ'");
+		
+		sb = new StringBuilder("Java");
+		
+		sb.append("vaJ$").delete(0, 3).deleteCharAt(sb.length() - 1);
+		
+		assertEquals("avaJ", sb.toString(), () -> "Should be equal to 'avaJ'");		
+		
+		//and the last one
+		
+		//arrange
+		final StringBuilder sb1 = new StringBuilder();
+		//act
+		StringIndexOutOfBoundsException e = assertThrows(StringIndexOutOfBoundsException.class, () -> sb1.append("vaJ$").delete(0, 3).deleteCharAt(sb1.length()));
+		
+		//assert
+		assertEquals("String index out of range: 1", e.getMessage(), () -> "Should be equal to 'String index out of range: 1'");
+	}
+	
+	@Test
+	@DisplayName("OCA page 158, question 19. Which of the following are true? (Choose all that reply)")
+	void testOCAPage158_19() {
+		//arrange
+		int[] one = {1, 3, 4};
+		int[] two = {1, 3, 4};
+		
+		//act, assert
+		assertNotEquals(one, two, () -> "Should be the same");
+		
+		
+		//arrange
+		List<Integer> listOne = new ArrayList<>();
+		listOne.add(1);
+		listOne.add(3);
+		listOne.add(4);
+		
+		List<Integer> listTwo = new ArrayList<>();
+		listTwo.add(1);
+		listTwo.add(3);
+		listTwo.add(4);
+		
+		//act, assert
+		assertEquals(listOne, listTwo, () -> "Should be equal");
+		assertNotSame(listOne, listTwo);
+		
+		//arrange
+		ArrayList list = new ArrayList();
+		
+		//act
+		IndexOutOfBoundsException e = assertThrows(IndexOutOfBoundsException.class, () -> list.remove(0));
+		
+		//assert
+		assertEquals("Index: 0, Size: 0", e.getMessage(), () -> "Should be equal to ' Index: 0, Size: 0'");
+		
+		
 		
 		
 	}
