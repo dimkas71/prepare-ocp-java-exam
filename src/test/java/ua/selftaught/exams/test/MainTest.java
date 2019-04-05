@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -212,6 +214,22 @@ class MainTest {
 		
 		
 	}
+	
+	@Test
+	@DisplayName("OCA page 160, question 25. Which of the following are true? (Choose all that reply)")
+	void testOCAPage160_25() {
+		//arrange
+		List<String> hex = Arrays.asList("30", "8", "3A", "FF");
+		//act
+		Collections.sort(hex);
+		int one = Collections.binarySearch(hex, "30");
+		int two = Collections.binarySearch(hex, "3A");
+		int three = Collections.binarySearch(hex, "4F");
+		
+		assertEquals("0 1 -3", one + " " + two + " " + three, () -> "Should be equal to 0 1 -3");
+		
+	}
+	
 	
 
 }
