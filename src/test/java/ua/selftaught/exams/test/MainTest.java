@@ -1,7 +1,7 @@
 package ua.selftaught.exams.test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,18 +94,48 @@ class MainTest {
 	@Test
 	void test() {
 		class Deer {
-			public Deer() {System.out.print("Deer");}
-			public Deer(int age) { System.out.print("DeepAge");}
+			public Deer() {name = "Deer";}
+			public Deer(int age) { name = "DeepAge";}
 			private boolean hasHorns() {return false;}
+			
+			private String name;
+			
 		}
 		
 		class Reinder extends Deer {
-			public Reinder(int age) {System.out.print("Reindeer");}
+			public Reinder(int age) {super.name = super.name + "Reindeer";}
 			public boolean hasHorns() { return true;}
 		}
 		
 		Deer deer = new Reinder(5);
-		System.out.println("," + deer.hasHorns());
+		//System.out.println("," + deer.hasHorns());
+		
+		assertEquals("DeerReindeer,false", deer.name + "," + deer.hasHorns());
+		
+	}
+	
+	@Test
+	@DisplayName("The test of using string's concat method")
+	void testStringMethods() {
+		String s = "Hello ";
+		assertEquals("Hello World", s.concat("World"), () -> "Hello World should be printed");
+	}
+	
+	@Test
+	@DisplayName("OCA page 155. 7. What is the result of the following code?(Choose all that apply)")
+	void testOCAPage155_7() {
+		String letters = "abcdef";
+		
+		assertEquals(6, letters.length(), () -> "The length of string 'abcdef' should be equal to 6");
+		
+		assertEquals('d', letters.charAt(3), () -> "'d' is the char at the position 3 of 'abcdef' string");
+		
+		StringIndexOutOfBoundsException e = assertThrows(StringIndexOutOfBoundsException.class, () -> {
+			letters.charAt(6);
+		});
+		
+		assertEquals("String index out of range: 6", e.getMessage());
+		
 		
 	}
 	
