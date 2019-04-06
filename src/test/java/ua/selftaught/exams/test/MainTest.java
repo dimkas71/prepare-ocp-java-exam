@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -202,6 +206,7 @@ class MainTest {
 		assertNotSame(listOne, listTwo);
 		
 		//arrange
+		@SuppressWarnings("rawtypes")
 		ArrayList list = new ArrayList();
 		
 		//act
@@ -229,6 +234,48 @@ class MainTest {
 		assertEquals("0 1 -3", one + " " + two + " " + three, () -> "Should be equal to 0 1 -3");
 		
 	}
+	
+	@Test
+	@DisplayName("OCA page 161, question 26. Which of the following are true statements about the following code? (Choose all that apply)")
+	void testOCAPage161_26() {
+		//arrange
+		List<Integer> list = new ArrayList<>();
+		
+		//act
+		NullPointerException e = assertThrows(NullPointerException.class, () -> {
+			list.add(Integer.parseInt("5"));
+			list.add(Integer.valueOf("6"));
+			list.add(7);
+			list.add(null); //
+			
+			for (int elem : list) {
+				
+				@SuppressWarnings("unused")
+				int a = elem;
+			}
+		});
+		
+		//assert
+		assertEquals(NullPointerException.class, e.getClass());
+		
+	}
+	
+	@Test
+	@DisplayName("OCA page 163, question 33. Which is the output of the following code?")
+	void testOCA163_33() {
+		LocalDateTime dt = LocalDateTime.of(2015, 5, 10, 11, 22, 33);
+		
+		@SuppressWarnings("static-access")
+		Period period = Period.ofDays(1).ofYears(2);
+		
+		dt = dt.minus(period);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+		
+		assertEquals("5/10/13 11:22 AM", formatter.format(dt));
+		
+	}
+	
 	
 	
 
