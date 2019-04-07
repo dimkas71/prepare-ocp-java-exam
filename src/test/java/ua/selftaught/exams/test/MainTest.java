@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +34,7 @@ class MainTest {
 			}
 		}
 		
-		Assertions.assertEquals(6, x, () -> "x should be equals to 6");
+		assertEquals(6, x, () -> "x should be equals to 6");
 	}
 	
 	@Test
