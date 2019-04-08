@@ -269,7 +269,7 @@ class MainTest {
 		
 		dt = dt.minus(period);
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/dd/YY HH:mm a");
 		
 		assertEquals("5/10/13 11:22 AM", formatter.format(dt));
 		
